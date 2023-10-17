@@ -11,7 +11,7 @@
   @include('partials._header')
 @endisset
 
-{{-- @include('cookieConsent::index') --}}
+
 
   <!-- End Header -->
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\SocialMediaLink;
+use App\Models\SocialMediaLink;
 use Illuminate\Http\Request;
 
 class SocialMediaLinkController extends Controller

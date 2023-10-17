@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Counter;
+use App\Models\Counter;
 use Illuminate\Http\Request;
 
 class CounterController extends Controller

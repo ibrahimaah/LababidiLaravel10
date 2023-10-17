@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Job;
-use App\Contact;
-use App\Category;
-use App\SocialMediaLink;
+use App\Models\Job;
+use App\Models\Contact;
+use App\Models\Category;
+use App\Models\SocialMediaLink;
 use Illuminate\Http\Request;
 
 class JobController extends Controller

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Video;
-use App\Contact;
-use App\Category;
-use App\SocialMediaLink;
+use App\Models\Video;
+use App\Models\Contact;
+use App\Models\Category;
+use App\Models\SocialMediaLink;
 use Illuminate\Http\Request;
 
 class PortfolioVideoController extends Controller

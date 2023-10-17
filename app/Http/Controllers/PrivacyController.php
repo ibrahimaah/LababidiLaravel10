@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Contact;
-use App\Category;
-use App\Privacy;
-use App\SocialMediaLink;
+use App\Models\Contact;
+use App\Models\Category;
+use App\Models\Privacy;
+use App\Models\SocialMediaLink;
 use Illuminate\Http\Request;
 
 class PrivacyController extends Controller

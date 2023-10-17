@@ -10,7 +10,7 @@
 @else
   @include('partials._header')
 @endisset
-@include('cookieConsent::index')
+
 <div class="top-img w-100">
     <img src="{{ asset('assets/img/images/a.jpg') }}" alt="top image" class="w-100">
 </div>

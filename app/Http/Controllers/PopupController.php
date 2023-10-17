@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Popup;
+use App\Models\Popup;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 

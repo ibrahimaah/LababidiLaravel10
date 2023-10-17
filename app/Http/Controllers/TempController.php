@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Temp;
-use App\Video;
+use App\Models\Temp;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class TempController extends Controller

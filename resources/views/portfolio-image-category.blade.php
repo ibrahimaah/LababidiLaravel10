@@ -10,7 +10,7 @@
 @else
   @include('partials._header')
 @endisset
-{{-- @include('cookieConsent::index') --}}
+ 
 	
   <style>
    
