@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Advertisement;
-use App\Contact;
-use App\Category;
+use App\Models\Advertisement;
+use App\Models\Contact;
+use App\Models\Category;
 
 use App\SocialMediaLink;
 use Illuminate\Http\Request;
