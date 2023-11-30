@@ -17,6 +17,8 @@ class CreateSocialMediaLinksTable extends Migration
             $table->id();
             $table->string('facebook');
             $table->string('instagram');
+            $table->string('youtube');
+            $table->string('tiktok');
         });
     }
 

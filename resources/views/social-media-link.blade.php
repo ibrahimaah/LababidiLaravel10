@@ -28,6 +28,14 @@
                     <label>Instagram :</label>
                     <input type="text" name="instagram" class="form-control" required>
                 </div>
+                <div class="form-group">
+                    <label>Youtube :</label>
+                    <input type="text" name="youtube" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Tiktok :</label>
+                    <input type="text" name="tiktok" class="form-control" required>
+                </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
@@ -40,12 +48,16 @@
                     <tr>
                         <th>Facebook</th>
                         <th>Instagram</th>
+                        <th>Youtube</th>
+                        <th>Tiktok</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>{{ $social_media_links->facebook }}</td>
                         <td>{{ $social_media_links->instagram }}</td>
+                        <td>{{ $social_media_links->youtube }}</td>
+                        <td>{{ $social_media_links->tiktok }}</td>
                     </tr>
                 </tbody>
               </table>

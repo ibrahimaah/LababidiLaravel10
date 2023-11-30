@@ -32,7 +32,7 @@ class PortfolioImageController extends Controller
         
         if($category_id) //if there is no category id , then the user needs All
         {
-            $images = Image::where('category_id',$category_id)->paginate(9);
+            $images = Image::where('category_id',$category_id)->simplePaginate(3);
         }
         else
         {

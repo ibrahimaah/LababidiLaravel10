@@ -34,6 +34,8 @@ class SocialMediaLinkController extends Controller
         
         $social_media_link->facebook = $request->facebook;
         $social_media_link->instagram = $request->instagram;
+        $social_media_link->youtube = $request->youtube;
+        $social_media_link->tiktok = $request->tiktok;
         
         if($social_media_link->save())
         {
