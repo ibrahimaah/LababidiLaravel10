@@ -4,7 +4,7 @@
 @section('admin-content')
 
 
-<h2 class="text-center mt-4">Create New Job</h2>
+<h2 class="text-center mt-4">Edit Job</h2>
 <hr class="my-4">
 
 <div class="container">

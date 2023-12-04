@@ -27,6 +27,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/demo.css') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/component.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/toggleButton.css') }}" />
     
     <!-- Whatsapp floating Icon --->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

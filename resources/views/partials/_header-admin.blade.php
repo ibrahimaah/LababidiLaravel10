@@ -19,8 +19,11 @@
           <a class="dropdown-item" href="{{ route('admin-slider') }}">
             Slider
           </a>
-          <a class="dropdown-item" href="{{ route('admin-about') }}">
+          <a class="dropdown-item" href="{{ route('edit-admin-about') }}">
             About
+          </a>
+          <a class="dropdown-item" href="{{ route('admin-about-services') }}">
+            About Us - Services
           </a>
           <a class="dropdown-item" href="{{ route('admin-counter') }}">
             Counters
@@ -52,7 +55,7 @@
 
 
       <li class="nav-item">
-          <a class="nav-link" href="{{ route('admin-social-media-link') }}">SocialMediaLinks</a>
+          <a class="nav-link" href="{{ route('admin-social-media-links') }}">SocialMediaLinks</a>
       </li>
 
       <li class="nav-item dropdown">

@@ -26,12 +26,18 @@
         <a href="#" class="facebook social-media-link"><i class="bx bxl-facebook" style="color:aliceblue"></i></a>
         <a href="#" class="instagram social-media-link"><i class="bx bxl-instagram" style="color:aliceblue"></i></a>
       </h1> -->
-
+      
       <h1 class="logo mr-auto">
-        <a href="{{ $social->instagram ?? '#' }}" class=""><img src="{{ asset('assets/img/social_media/insta.png') }}" alt="instagram icon"></a>
-        <a href="{{ $social->facebook ?? '#' }}" class=""><img src="{{ asset('assets/img/social_media/face.png') }}" alt="facebook icon"></a>
-        <a href="{{ $social->youtube ?? '#' }}" class=""><img src="{{ asset('assets/img/social_media/youtube.png') }}" alt="youtube icon"></a>
-        <a href="{{ $social->tiktok ?? '#' }}" class=""><img src="{{ asset('assets/img/social_media/tiktok.png') }}" alt="tiktok icon"></a>
+        @if($social_media->isNotEmpty())
+          @foreach($social_media as $social)
+            @if($social->active)
+              <a href="{{ $social->link }}">
+                <img src="{{ asset('storage/images/social_media_icons/'.$social->icon) }}"
+                    alt="{{ $social->name }}">
+              </a>
+           @endif
+          @endforeach 
+        @endif
       </h1>
 
 
