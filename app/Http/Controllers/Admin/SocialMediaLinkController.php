@@ -13,7 +13,7 @@ class SocialMediaLinkController extends Controller
      */
     public function index()
     {
-        return view('admin.socialMediaLinks.index', [
+        return view('admin.SocialMediaLinks.index', [
             'social_media_links' => SocialMediaLink::all()
         ]);
     }
@@ -23,7 +23,7 @@ class SocialMediaLinkController extends Controller
      */
     public function create()
     {
-        return view('admin.socialMediaLinks.create');
+        return view('admin.SocialMediaLinks.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class SocialMediaLinkController extends Controller
             'name' => 'required',
             'link' => 'required',
             'active' => 'required',
-            'icon' => 'required|image|mimes:png|dimensions:width=256,height=256'
+            'icon' => 'image|mimes:png|dimensions:width=256,height=256'
         ]);
         
         $social_media_link = new SocialMediaLink();
@@ -44,14 +44,15 @@ class SocialMediaLinkController extends Controller
         $social_media_link->link = $request->link;
         $social_media_link->active = $request->active;
 
-        //rename the image
-        $iconName = '_social_media_icon'.time().'.'.$request->icon->getClientOriginalExtension();
-        //upload the image
-        $request->icon->move(public_path('storage/images/social_media_icons'), $iconName);
+        if($request->hasFile('icon'))
+        { 
+            //rename the image
+            $iconName = '_social_media_icon'.time().'.'.$request->icon->getClientOriginalExtension();
+            //upload the image
+            $request->icon->move(public_path('storage/images/social_media_icons'), $iconName);
 
-        
-
-        $social_media_link->icon = $iconName;
+            $social_media_link->icon = $iconName;
+        }
 
         if($social_media_link->save())
         {
@@ -68,7 +69,7 @@ class SocialMediaLinkController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.socialMediaLinks.edit', [
+        return view('admin.SocialMediaLinks.edit', [
             'social_media' => SocialMediaLink::find($id)
         ]);
     }
@@ -93,12 +94,15 @@ class SocialMediaLinkController extends Controller
         $social_media_link->active = $request->active;
         // dd($request->active);
 
-        if ($request->icon) {
-
-            if(file_exists(public_path("storage/images/social_media_icons/$social_media_link->icon"))){
-                unlink(public_path("storage/images/social_media_icons/$social_media_link->icon"));
+        if ($request->hasFile('icon')) 
+        {
+            if($social_media_link->icon)
+            {
+                if(file_exists(public_path("storage/images/social_media_icons/$social_media_link->icon")))
+                {
+                    unlink(public_path("storage/images/social_media_icons/$social_media_link->icon"));
+                }
             }
-        
             //rename the image
             $iconName = '_social_media_icon'.time().'.'.$request->icon->getClientOriginalExtension();
             //upload the image
@@ -122,13 +126,16 @@ class SocialMediaLinkController extends Controller
      */
     public function destroy(string $id)
     {
-        $social_media_link = SocialMediaLink::find($id);
-        if(file_exists(public_path("storage/images/social_media_icons/$social_media_link->icon")))
+        $social_media_link = SocialMediaLink::findOrFail($id);
+        if($social_media_link->icon)
         {
-            unlink(public_path("storage/images/social_media_icons/$social_media_link->icon"));
-            $social_media_link->delete();
-            return back()->with('success-removed','Social Media Removed Successfully :)');
+            if(file_exists(public_path("storage/images/social_media_icons/$social_media_link->icon")))
+            {
+                unlink(public_path("storage/images/social_media_icons/$social_media_link->icon"));
+            }
         }
+        $social_media_link->delete();
+        return back()->with('success-removed','Social Media Removed Successfully :)');
         return back()->with('faild-removed','Social Media Can\'t be removed :(');
     }
 

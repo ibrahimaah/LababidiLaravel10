@@ -6,11 +6,19 @@ use App\Models\Image;
 use App\Models\Contact;
 use App\Models\Category;
 use App\Models\SocialMediaLink;
+use App\Services\PortfolioImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PortfolioImageController extends Controller
 {
+    private $portfolioImageService;
+
+    public function __construct(PortfolioImageService $portfolioImageService)
+    {
+        $this->portfolioImageService = $portfolioImageService;
+    }
+
     public function index()
     {
         $categories = Category::all();
@@ -26,43 +34,11 @@ class PortfolioImageController extends Controller
         }
     }
 
-    public function getCategoryById($category_id=null)
+    public function getCategoryById($category_id)
     {
-        $categories = Category::all();
-        
-        if($category_id) //if there is no category id , then the user needs All
-        {
-            $images = Image::where('category_id',$category_id)->simplePaginate(3);
-        }
-        else
-        {
-            $images = Image::paginate(9);
-        }
-        
-        return view('portfolio-image-category')->withCategories($categories)->withImages($images)->withCategoryId($category_id);
+        return view('portfolio-image-category')
+                ->with('img_category', $this->portfolioImageService->getImageCategoryById($category_id));
     }
 
-    // public function getAllImages()
-    // {
-    //     $categories = Category::all();
-    //     $images = Image::paginate(10);
-    //     return view('portfolio-image-all')->withCategories($categories)->withImages($images);
-    // }
-
-
-    // public function getSelectedCategory($category_id)
-    // {
-    //     $categories = Category::all();
-    //     $images = Image::orderBy('category_id')->get();
-    //     $contacts = Contact::find(1);
-    //     $id = $category_id;
-    //     if($categories && count($categories) > 0)
-    //     {
-    //         return view('portfolio-image')->withCategories($categories)->withImages($images)->withContacts($contacts)->withId($id);
-    //     }
-    //     else
-    //     {
-    //         return view('portfolio-image')->with('noData','There are no images yet');
-    //     }
-    // }
+   
 }

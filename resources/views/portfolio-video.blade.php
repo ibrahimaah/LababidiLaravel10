@@ -44,7 +44,7 @@
     </div>
 </div>
 <a href="https://api.whatsapp.com/send?phone=<?=$contacts->call  ?? '491711172776'?>&text=&source=&data=" class="whatsApp" target="_blank"><i class="fa fa-whatsapp my-whatsApp"></i></a>
-<div id="preloader"></div>
+
 @isset($categories)
   @include('partials._footer',['categories',$categories])
 @else

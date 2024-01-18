@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SocialMediaLinkController;
+use App\Http\Controllers\PortfolioImageController;
 // use App\Models\SocialMediaLink;
 
 /*
@@ -23,13 +24,23 @@ use App\Http\Controllers\Admin\SocialMediaLinkController;
 
 
 Route::get('/', 'App\Http\Controllers\MainController@index')->name('main');
-Route::get('/portfolio-image/{category_id}', 'App\Http\Controllers\PortfolioImageController@getSelectedCategory')->name('portfolio-image-with-category');
 
-// Route::post('/contact','ContactController@store');
 
-Route::get('/Fotogalerie', 'App\Http\Controllers\PortfolioImageController@index')->name('portfolio-image');
-// Route::get('/Fotogalerie/ALL', 'PortfolioImageController@getAllImages')->name('portfolio-image-all');
-Route::get('/Fotogalerie/category/{category_id?}', 'App\Http\Controllers\PortfolioImageController@getCategoryById')->name('portfolio-image-category');
+Route::get(
+        '/portfolio-image/{category_id}', 
+        [PortfolioImageController::class , 'getSelectedCategory']
+    )->name('portfolio-image-with-category');
+    
+Route::get(
+        '/Fotogalerie', 
+        [PortfolioImageController::class , 'index']
+    )->name('portfolio-image');
+
+Route::get(
+        '/Fotogalerie/{category_id}', 
+        [PortfolioImageController::class , 'getCategoryById']
+    )->name('portfolio-image-category');
+
 
 Route::get('/Videogalerie', 'App\Http\Controllers\PortfolioVideoController@index')->name('portfolio-video');
 

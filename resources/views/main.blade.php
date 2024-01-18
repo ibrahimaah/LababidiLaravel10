@@ -95,7 +95,7 @@
       .bg-gradient
       {
         background: rgb(2,0,36);
-        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 100%, rgba(0,212,255,1) 100%);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 100%, rgba(0,212,255,1) 100%) !important;
       }
       @media (min-width:801px)  {
         .about-section {
@@ -265,12 +265,12 @@
 
           <div class="col-sm mt-4">
             <div class="card text-center m-auto px-2 pb-2 pt-3" style="width: 18rem;background-color:#f8fbfe" data-aos="zoom-in" data-aos-delay="100">
-              <a href="{{ route('portfolio-image-category',$category->id) }}#bildergaleries">
+              <a href="{{ route('portfolio-image-category',$category->id) }}">
                <img class="card-img-top" src="{{ asset('storage/images/icons/'.$category->icon) }}" alt="Category Icon">
               </a>
               <div class="card-body" style="background-color:#f8fbfe">
                 <p class="card-text">
-                 <a href="{{ route('portfolio-image-category',$category->id) }}#bildergaleries">{{ $category->name }}</a>
+                 <a href="{{ route('portfolio-image-category',$category->id) }}">{{ $category->name }}</a>
                 </p>
               </div>
             </div>
@@ -437,7 +437,7 @@
 <!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
-  <div id="preloader"></div>
+  
 
 
 

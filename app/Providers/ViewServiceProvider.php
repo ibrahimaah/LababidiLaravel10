@@ -2,6 +2,7 @@
  
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\SocialMediaLink;
 use App\View\Composers\ProfileComposer;
 use Illuminate\Support\Facades;
@@ -25,7 +26,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         // Using closure based composers...
         Facades\View::composer('partials._header', function (View $view) {
-            $view->with('social_media',SocialMediaLink::all());
+            $view->with('social_media',SocialMediaLink::all())->with('categories', Category::all());
         });
  
     }

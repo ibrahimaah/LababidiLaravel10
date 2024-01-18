@@ -9,7 +9,7 @@
     }
 </style>
 
-<h2 class="text-center mt-4">Social Medial Links</h2>
+<h2 class="text-center mt-4 text-secondary">Social Medial Links</h2>
 <hr class="my-4">
 
 <div class="container">
@@ -18,8 +18,8 @@
             <a href="{{ route('admin-social-media-link-create') }}" class="btn btn-primary">Create New Social Media Link</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-md-10">
             @if(Session::has('success-removed'))
                 <h4 class="text-success">{{ session()->get('success-removed') }}</h4>
             @endif
@@ -50,7 +50,16 @@
                                 <th scope="row">{{ $loop->index + 1 }}</th>
                                 <td>{{ $social_media_link->name }}</td>
                                 <td><a href="{{ $social_media_link->link }}" class="preview">{{ $social_media_link->link }}</a></td>
-                                <td><a href="{{ asset('storage/images/social_media_icons/'.$social_media_link->icon) }}" class="preview" target="_blank"> preview </a></td>
+                                @if($social_media_link->icon)
+                                <td>
+                                    <a href="{{ asset('storage/images/social_media_icons/'.$social_media_link->icon) }}" 
+                                     class="preview" target="_blank"> preview </a>
+                                </td>
+                                @else 
+                                <td>
+                                    <span class="text-primary">Default Icon</span>
+                                </td>
+                                @endif
                                 <td>
                                     <form action="{{ route('admin-social-media-link-activate', $social_media_link->id) }}" method="POST">
                                         @csrf
@@ -66,7 +75,7 @@
                                     </form>
                                 </td>
                                 <td class='d-flex align-items-baseline justify-content-center'>
-                                    <a href="{{ route('admin-social-media-link-edit',$social_media_link->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="{{ route('admin-social-media-link-edit',$social_media_link->id) }}" class="btn btn-sm btn-warning me-2">Edit</a>
                                     <form action="{{ route('admin-social-media-link-destroy', $social_media_link->id) }}" method="POST">
                                         @csrf
                                         <input type="submit" value="Remove" class="btn btn-sm btn-danger ml-3">

@@ -1,65 +1,54 @@
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
 
-<style>
-@media only screen and (max-width: 600px) {
-  .logo-text {display:none !important}
-}
-.social-media-link{
-    font-size: 18px;
-    display: inline-block;
-    background: #2d333b;
-    color: #fff;
-    line-height: 1;
-    padding: 8px 0;
-    margin-right: 4px;
-    border-radius: 5px;
-    text-align: center;
-    width: 36px;
-    height: 36px;
-    transition: 0.3s; 
-}
+      <a href="{{ route('main') }}" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="{{ asset('assets/img/images/logo.jpg') }}"
+             class="rounded-circle"
+             alt="logo"> 
+        <h1>Lababidi Bau</h1>
+      </a>
 
-</style>
-<header id="header" class="fixed-top"><!-- class="fixed-top"-->
-    <div class="container d-flex align-items-center">
-
-      <!-- <h1 class="logo mr-auto">
-        <a href="#" class="facebook social-media-link"><i class="bx bxl-facebook" style="color:aliceblue"></i></a>
-        <a href="#" class="instagram social-media-link"><i class="bx bxl-instagram" style="color:aliceblue"></i></a>
-      </h1> -->
-      
-      <h1 class="logo mr-auto">
-        @if($social_media->isNotEmpty())
-          @foreach($social_media as $social)
-            @if($social->active)
-              <a href="{{ $social->link }}">
-                <img src="{{ asset('storage/images/social_media_icons/'.$social->icon) }}"
-                    alt="{{ $social->name }}">
-              </a>
-           @endif
-          @endforeach 
-        @endif
-      </h1>
-
-
-
-
-
-      <!-- <h1 class="logo mr-auto"><a href="{{ route('main') }}">LABABIDI BAU</a></h1> -->
-
-
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav class="nav-menu d-none d-lg-block">
+      <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="{{ route('main') }}">Home</a></li>
+          
+          <li><a href="{{ route('main') }}" class="{{ request()->routeIs('main') ? 'active' : '' }}">Home</a></li>
           <li><a href="{{ route('main') }}#leistungen">Leistungen</a></li>
-          <li><a href="{{ route('portfolio-image') }}">Fotogalerie</a></li>
-          <li><a href="{{ route('portfolio-video') }}">Videogalerie</a></li>
+          
+          <li class="dropdown"><a href="#"><span>Fotogalerie</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          @if($categories->isNotEmpty())
+            <ul>
+            @foreach($categories as $category)
+              <li><a href="/Fotogalerie/<?=$category->id?>">{{ $category->name }}</a></li> 
+            @endforeach
+            </ul>
+          @endif
+          </li>
+          <li><a href="{{ route('portfolio-video') }}" class="{{ request()->routeIs('portfolio-video') ? 'active' : '' }}">Videogalerie</a></li>
           <li><a href="{{ route('main') }}#Kontakt">Kontakt</a></li> 
         </ul>
       </nav>
-      <!-- <a href="{{ route('portfolio-image') }}" class="get-started-btn scrollto">Portfolio Images</a> -->
-      
+      <!-- .navbar -->
+
+      <div class="header-social-links">
+      @if($social_media->isNotEmpty())
+        @foreach($social_media as $social)
+          @if($social->active)
+            @if(!$social->icon)
+              <a href="<?=$social->link?>"><i class="bi bi-<?=$social->name?>"></i></a>
+            @else 
+              <a href="{{ $social->link }}">
+                <img src="{{ asset('storage/images/social_media_icons/'.$social->icon) }}"
+                    alt="{{ $social->name }}" style="width:40px;height:40px">
+              </a>
+            @endif
+          @endif
+        @endforeach
+      @endif
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
     </div>
-  </header>
+  </header><!-- End Header -->

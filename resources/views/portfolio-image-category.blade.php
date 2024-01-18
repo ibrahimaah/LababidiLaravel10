@@ -76,70 +76,45 @@
   </style>
 
 
-
-  <div class="top-img w-100">
-    <img src="{{ asset('assets/img/images/a.jpg') }}" alt="top image" class="w-100">
-  </div>
-
-
 	<section id="portfolio" class="portfolio py-5" >
     <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2 data-aos="flip-left"
-          data-aos-easing="ease-out-cubic"
-          data-aos-duration="2000" style="text-decoration: underline;" id="bildergaleries">Bildergaleries</h2>
-          
-        </div>
+  
 
-
-
-
-        <div class="row" data-aos="fade-up" data-aos-delay="150">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-                <li class="{{ (!$categoryId) ? 'border-danger' : '' }}">
-                    <a href="{{ route('portfolio-image-category') }}#bildergaleries" class="{{ (!$categoryId) ? 'text-danger' : '' }}">All</a>
-                </li>
-                @isset($categories)
-                    @foreach($categories as $category)
-                            <li class="{{ ($categoryId == $category->id) ? 'border-danger' : '' }}">
-                                <a href="{{ route('portfolio-image-category',$category->id) }}#bildergaleries" class="{{ ($categoryId == $category->id) ? 'text-danger' : '' }}">
-                                    <?=$category->name?>
-                                </a>
-                            </li>
-                    @endforeach
-			          @endisset
-            </ul>
+        <div class="row d-flex justify-content-center mb-4">
+          <div class="col-lg-6 text-center">
+            <h2 data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000" >
+                {{ $img_category->name }}
+            </h2>
+            <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
           </div>
         </div>
-
-        <hr>
-
-
 
 
         
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
-          @foreach($images as $image)
+          @foreach($img_category->images as $image)
             
-          <div class="col-lg-4 col-md-6 portfolio-item">
+          <div class="col-md-4 portfolio-item">
             <div class="portfolio-wrap">
 
               <img src="{{ asset('storage/images/'.$image->name) }}" class="img-fluid">
 
-              <div class="portfolio-info">
+              <div class="portfolio-info w-100 h-100">
                 
-                <h4 class="invisible"><?=$image->category->name?></h4>
-                <div class="portfolio-links">
-
-                  <a href="{{ asset('storage/images/'.$image->name) }}" 
-                     data-gall="portfolioGallery" 
-                     class="venobox" title="<?=$image->category->name?>">
-
-                     <div style="width:800px;height:600px"></div>
-
+                <h4 class="invisible"><?=$img_category->name?></h4>
+                
+                <div class="portfolio-links w-100 h-100">
+                  <a 
+                    href="{{ asset('storage/images/'.$image->name) }}" 
+                    data-gall="portfolioGallery" 
+                    class="venobox" 
+                    title="<?=$img_category->name?>"
+                  >
+                    <div style="width:800px;height:600px"></div>
                   </a>  
                 </div>
               </div>
@@ -152,23 +127,18 @@
 
     </div>
 
-    <div class="container">{{ $images->onEachSide(1)->links() }}</div>
-    <!------------------------------------------------>
-  
-
-  
-    <!------------------------------------------------>
+    
 
   </section>
 
     <a href="https://api.whatsapp.com/send?phone=<?=$contacts->call  ?? '491711172776'?>&text=&source=&data=" class="whatsApp" target="_blank"><i class="fa fa-whatsapp my-whatsApp"></i></a>
 
-    <div id="preloader"></div>
-@isset($categories)
-  @include('partials._footer',['categories',$categories])
-@else
-  @include('partials._footer')
-@endisset
+    
+    @isset($categories)
+      @include('partials._footer',['categories',$categories])
+    @else
+      @include('partials._footer')
+    @endisset
     <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
   
 @endsection
