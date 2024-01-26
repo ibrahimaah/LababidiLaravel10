@@ -55,24 +55,26 @@
 
        /* Customizing the pagination view */
 
-    .page-link{
-      background-color:#444 !important;
-      color:white !important;
+     .page-link{
+        color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity))!important;
     }
+   
     .page-item.active .page-link {
-      background-color:#ee1a36 !important;
-      border:none;
+      background-color:var(--secondary-color) !important;
+      color:#fff !important;
+    } 
+    #portfolio > div > nav > ul > li.page-item.active > span {
+      border: none !important;
     }
-    .page-link:hover{
-      background-color:#ee1a36 !important;
-      border:none;
-    }
-    .page-link:focus{
-      outline: 0;
-      box-shadow: 0 0 0 0.2rem rgb(238 26 54 / 25%);
-    }
+    /*
+    .active>.page-link, .page-link.active {
+      border-color: var(--secondary-color) !important;
+    } */
     
-
+    #portfolio > div > div.row.d-flex.justify-content-center.mb-4 > div > ul > li > a.active{
+      color: #fff !important;
+      background-color: var(--secondary-color) !important;
+    }
   </style>
 
 
@@ -83,11 +85,21 @@
 
         <div class="row d-flex justify-content-center mb-4">
           <div class="col-lg-6 text-center">
-            <h2 data-aos="flip-left"
+        {{--<h2 data-aos="flip-left"
                 data-aos-easing="ease-out-cubic"
                 data-aos-duration="2000" >
-                {{ $img_category->name }}
-            </h2>
+                {{ $current_category->name }}
+            </h2> --}}
+          @if($categories->isNotEmpty())
+            <ul class="nav nav-pills nav-fill mb-3">
+              @foreach($categories as $category)
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-secondary <?=$category->id == $current_category->id ? 'active' : ''?>"
+                   href="{{ route('portfolio-image-category',['category_id'=>$category->id]) }}">{{ $category->name }}</a>
+              </li>
+              @endforeach
+            </ul>
+          @endif
             <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
           </div>
         </div>
@@ -96,7 +108,7 @@
         
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
-          @foreach($img_category->images as $image)
+          @foreach($images as $image)
             
           <div class="col-md-4 portfolio-item">
             <div class="portfolio-wrap">
@@ -105,14 +117,14 @@
 
               <div class="portfolio-info w-100 h-100">
                 
-                <h4 class="invisible"><?=$img_category->name?></h4>
+                <h4 class="invisible"><?=$current_category->name?></h4>
                 
                 <div class="portfolio-links w-100 h-100">
                   <a 
                     href="{{ asset('storage/images/'.$image->name) }}" 
                     data-gall="portfolioGallery" 
                     class="venobox" 
-                    title="<?=$img_category->name?>"
+                    title="<?=$current_category->name?>"
                   >
                     <div style="width:800px;height:600px"></div>
                   </a>  
@@ -121,9 +133,10 @@
             </div>
           </div>
           @endforeach
+          
         </div>
         
-        
+        {{ $images->links() }}
 
     </div>
 

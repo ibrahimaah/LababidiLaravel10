@@ -1,3 +1,8 @@
+:root {
+    --main-color: #ee1a36;
+    --secondary-color: #222222;
+}
+
 body {
     font-family: "Open Sans", sans-serif;
     color: #444;
@@ -7,7 +12,7 @@ a {
     color: #2d333b;
 }
 a:hover {
-    color: #ee1a36;
+    color: var(--main-color);
     text-decoration: none;
 }
 h1,
@@ -38,7 +43,7 @@ h6 {
     transition: all 0.4s;
 }
 .back-to-top i:hover {
-    background: #ee1a36;
+    background: var(--main-color);
     color: #fff;
 }
 
@@ -93,7 +98,7 @@ section {
     left: 0;
     top: 2px;
     font-size: 20px;
-    color: #ee1a36;
+    color: var(--main-color);
     line-height: 1;
 }
 .about .content p:last-child {
@@ -109,14 +114,14 @@ section {
     border-radius: 5px;
     transition: 0.3s;
     line-height: 1;
-    color: #ee1a36;
+    color: var(--main-color);
     -webkit-animation-delay: 0.8s;
     animation-delay: 0.8s;
     margin-top: 6px;
-    border: 2px solid #ee1a36;
+    border: 2px solid var(--main-color);
 }
 .about .content .btn-learn-more:hover {
-    background: #ee1a36;
+    background: var(--main-color);
     color: #fff;
     text-decoration: none;
 }
@@ -132,7 +137,7 @@ section {
     line-height: 48px;
     display: block;
     font-weight: 700;
-    color: #ee1a36;
+    color: var(--main-color);
     margin-left: 80px;
     margin: auto;
 }
@@ -162,7 +167,7 @@ section {
 }
 .about-video .content ul i {
     font-size: 24px;
-    color: #ee1a36;
+    color: var(--main-color);
     position: absolute;
     left: 0;
     top: -2px;
@@ -173,7 +178,7 @@ section {
 .about-video .play-btn {
     width: 94px;
     height: 94px;
-    background: radial-gradient(#ee1a36 50%, rgba(36, 135, 206, 0.4) 52%);
+    background: radial-gradient(var(--main-color) 50%, rgba(36, 135, 206, 0.4) 52%);
     border-radius: 50%;
     display: block;
     position: absolute;
@@ -218,7 +223,7 @@ section {
     background: rgba(198, 16, 0, 0);
 }
 .about-video .play-btn:hover::after {
-    border-left: 15px solid #ee1a36;
+    border-left: 15px solid var(--main-color);
     transform: scale(20);
 }
 .about-video .play-btn:hover::before {
@@ -383,7 +388,7 @@ section {
     fill: #11dbcf;
 }
 .cta {
-    background: #ee1a36;
+    background: var(--main-color);
     background-size: cover;
     padding: 60px 0;
 }
@@ -410,7 +415,7 @@ section {
 }
 .cta .cta-btn:hover {
     background: #fff;
-    color: #ee1a36;
+    color: var(--main-color);
 }
 .portfolio .portfolio-item {
     margin-bottom: 30px;
@@ -438,7 +443,7 @@ section {
 }
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-    color: #ee1a36;
+    color: var(--main-color);
 }
 .portfolio #portfolio-flters li:last-child {
     margin-right: 0;
@@ -584,7 +589,7 @@ section {
 .contact .info .email:hover i,
 .contact .info .address:hover i,
 .contact .info .phone:hover i {
-    background: #ee1a36;
+    background: var(--main-color);
     color: #fff;
 }
 .contact .php-email-form {
@@ -647,7 +652,7 @@ section {
 }
 .contact .php-email-form input:focus,
 .contact .php-email-form textarea:focus {
-    border-color: #ee1a36;
+    border-color: var(--main-color);
 }
 .contact .php-email-form input {
     height: 44px;
@@ -664,7 +669,7 @@ section {
     border-radius: 4px;
 }
 .contact .php-email-form button[type="submit"]:hover {
-    background: #ee1a36;
+    background: var(--main-color);
 }
 @-webkit-keyframes animate-loading {
     0% {
@@ -727,7 +732,7 @@ section {
 }
 #footer .footer-top .footer-links ul i {
     padding-right: 2px;
-    color: #ee1a36;
+    color: var(--main-color);
     font-size: 18px;
     line-height: 1;
 }
@@ -747,7 +752,7 @@ section {
 }
 #footer .footer-top .footer-links ul a:hover {
     text-decoration: none;
-    color: #ee1a36;
+    color: var(--main-color);
 }
 #footer .footer-newsletter {
     font-size: 15px;
@@ -782,7 +787,7 @@ section {
     background: none;
     font-size: 16px;
     padding: 0 20px 2px 20px;
-    background: #ee1a36;
+    background: var(--main-color);
     color: #fff;
     transition: 0.3s;
     border-radius: 0 5px 5px 0;
@@ -811,7 +816,7 @@ section {
     transition: 0.3s;
 }
 .social-links a:hover {
-    background: #ee1a36;
+    background: var(--main-color);
     color: #fff;
     text-decoration: none;
 }

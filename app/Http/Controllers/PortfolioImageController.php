@@ -21,7 +21,7 @@ class PortfolioImageController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        $categories = $this->portfolioImageService->getAllCategories();
         $contacts = Contact::find(1);
         $social = SocialMediaLink::find(1);
         if($categories && count($categories) > 0)
@@ -36,8 +36,16 @@ class PortfolioImageController extends Controller
 
     public function getCategoryById($category_id)
     {
+        $categories = $this->portfolioImageService->getAllCategories();
+
+        $current_category = $categories->where('id', $category_id)->first();
+
+        $images = $current_category->images()->paginate(6);
+
         return view('portfolio-image-category')
-                ->with('img_category', $this->portfolioImageService->getImageCategoryById($category_id));
+                ->with('current_category', $current_category)
+                ->with('categories', $categories)
+                ->with('images', $images);
     }
 
    
