@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Paginator::useBootstrapFour();
+        Paginator::useBootstrapFive();
         // View::composer('partials._header', function ($view) {
         //     $view->with('categories', Category::all())->with('social_media_links', SocialMediaLink::all());
         // });

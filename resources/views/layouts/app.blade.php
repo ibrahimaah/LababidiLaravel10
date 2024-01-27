@@ -32,7 +32,8 @@
     <link href="{{ asset('assets/vendor/venobox/venobox.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-
+    
+    
 
     
 
@@ -53,11 +54,6 @@
     <script src="https://cdn.tiny.cloud/1/l86ybdpz6cixgvcq47wqlesdrxxda0gc8ktjfbintv0zzt7q/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <!------------------------------------------------------------------------------------------------------>
 
-
-
-  
-
-
     <link href="{{ asset('assets/css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <title>@yield('title','LABABIDI BAU')</title>
@@ -66,7 +62,9 @@
 <body>
 
 
+    
     @yield('content')
+    
 
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <!-- <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script> -->
@@ -78,6 +76,7 @@
     <script src="{{ asset('assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+    
     
     <!--- jQuery Cookies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -100,49 +99,6 @@
 
     <script src="{{ asset('assets/js/header.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-
-    <script>
-    //Upload image in Portfolio page
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
-    var fileName = $(this).val().split("\\").pop();
-    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-    </script>
-
-
-    <script>
-        //  Set caption from card text
-        $('.card-deck a').fancybox({
-        caption : function( instance, item ) {
-            return $(this).parent().find('.card-text').html();
-        }
-        });
-    </script>
-
-
-    <!-- Show Bootstrap 4 Popup just once  -->
-    <script type="text/javascript">
-    
-        $(window).on('load', function() 
-        {
-            //$('#popup').modal('show');
-            active = $('#popup').data('active')
-            
-            if(active==1)
-            {
-                if ($.cookie('pop') == null) 
-                {
-                    $('#popup').modal('show');
-                    var date = new Date();
-                    var minutes = 30;
-                    date.setTime(date.getTime() + (minutes * 60 * 1000));
-                    $.cookie('pop', '1',{ expires: date });//timeout = 30 minutes
-                }
-            }
-        });
-
-    </script>
 
 </body>
 </html>

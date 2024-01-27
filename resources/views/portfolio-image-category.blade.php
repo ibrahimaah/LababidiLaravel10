@@ -58,22 +58,23 @@
      .page-link{
         color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity))!important;
     }
-   
+    
     .page-item.active .page-link {
-      background-color:var(--secondary-color) !important;
+      background-color:var(--second-color) !important;
       color:#fff !important;
+      border: none;
     } 
     #portfolio > div > nav > ul > li.page-item.active > span {
       border: none !important;
     }
     /*
     .active>.page-link, .page-link.active {
-      border-color: var(--secondary-color) !important;
+      border-color: var(--second-color) !important;
     } */
     
     #portfolio > div > div.row.d-flex.justify-content-center.mb-4 > div > ul > li > a.active{
       color: #fff !important;
-      background-color: var(--secondary-color) !important;
+      background-color: var(--second-color) !important;
     }
   </style>
 
@@ -84,23 +85,19 @@
   
 
         <div class="row d-flex justify-content-center mb-4">
-          <div class="col-lg-6 text-center">
-        {{--<h2 data-aos="flip-left"
-                data-aos-easing="ease-out-cubic"
-                data-aos-duration="2000" >
-                {{ $current_category->name }}
-            </h2> --}}
-          @if($categories->isNotEmpty())
-            <ul class="nav nav-pills nav-fill mb-3">
-              @foreach($categories as $category)
-              <li class="nav-item">
-                <a class="nav-link fw-bold text-secondary <?=$category->id == $current_category->id ? 'active' : ''?>"
-                   href="{{ route('portfolio-image-category',['category_id'=>$category->id]) }}">{{ $category->name }}</a>
-              </li>
-              @endforeach
-            </ul>
-          @endif
-            <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+          <div class="col-lg-12 text-center">
+      
+            @if($categories->isNotEmpty())
+              <ul class="nav nav-pills nav-fill mb-3">
+                @foreach($categories as $category)
+                <li class="nav-item">
+                  <a class="nav-link fw-bold text-secondary <?=$category->id == $current_category->id ? 'active' : ''?>"
+                    href="{{ route('portfolio-image-category',['category_id'=>$category->id]) }}">{{ $category->name }}</a>
+                </li>
+                @endforeach
+              </ul>
+            @endif
+            <p class="text-secondary">{{ $current_category->description }}</p>
           </div>
         </div>
 
@@ -136,7 +133,11 @@
           
         </div>
         
-        {{ $images->links() }}
+        <div class="row justify-content-center">
+          <div class="col-xs-12">
+            {{ $images->links() }}
+          </div>
+        </div>
 
     </div>
 

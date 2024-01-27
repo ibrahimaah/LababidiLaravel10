@@ -53,7 +53,7 @@
                         <option selected>Open this select menu</option>
                         <option value="facebook">Facebook</option>
                         <option value="whatsApp">WhatsApp</option>
-                        <option value="youTube">YouTube</option>
+                        <option value="youtube">YouTube</option>
                         <option value="instagram">Instagram</option>
                         <option value="tikTok">TikTok</option>
                         <option value="twitter">Twitter</option>

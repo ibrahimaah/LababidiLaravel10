@@ -48,7 +48,7 @@
                         <!-- <option selected>Open this select menu</option> -->
                         <option value="facebook" <?=$social_media->name == 'facebook' ? 'selected' : ''?>>Facebook</option>
                         <option value="whatsApp" <?=$social_media->name == 'whatsApp' ? 'selected' : ''?>>WhatsApp</option>
-                        <option value="youTube" <?=$social_media->name == 'youTube' ? 'selected' : ''?>>YouTube</option>
+                        <option value="youtube" <?=$social_media->name == 'youTube' ? 'selected' : ''?>>YouTube</option>
                         <option value="instagram" <?=$social_media->name == 'instagram' ? 'selected' : ''?>>Instagram</option>
                         <option value="tikTok" <?=$social_media->name == 'tikTok' ? 'selected' : ''?>>TikTok</option>
                         <option value="twitter" <?=$social_media->name == 'twitter' ? 'selected' : ''?>>Twitter</option>

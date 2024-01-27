@@ -135,3 +135,32 @@
   });
 
 })(jQuery);
+
+
+//  Set caption from card text
+$('.card-deck a').fancybox({
+  caption : function( instance, item ) {
+      return $(this).parent().find('.card-text').html();
+  }
+});
+
+
+//Show Bootstrap 5 Popup just once
+
+$(window).on('load', function() 
+{
+    //$('#popup').modal('show');
+    active = $('#popup').data('active')
+    
+    if(active==1)
+    {
+        if ($.cookie('pop') == null) 
+        {
+            $('#popup').modal('show');
+            var date = new Date();
+            var minutes = 30;
+            date.setTime(date.getTime() + (minutes * 60 * 1000));
+            $.cookie('pop', '1',{ expires: date });//timeout = 30 minutes
+        }
+    }
+});

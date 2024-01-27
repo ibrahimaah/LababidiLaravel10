@@ -1,6 +1,6 @@
 :root {
     --main-color: #ee1a36;
-    --secondary-color: #222222;
+    --second-color: #222222;
 }
 
 body {
@@ -841,3 +841,6 @@ section {
 .my-whatsApp {
     margin-top: 16px;
 }
+
+
+
