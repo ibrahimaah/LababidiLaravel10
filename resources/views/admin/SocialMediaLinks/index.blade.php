@@ -78,7 +78,7 @@
                                     <a href="{{ route('admin-social-media-link-edit',$social_media_link->id) }}" class="btn btn-sm btn-warning me-2">Edit</a>
                                     <form action="{{ route('admin-social-media-link-destroy', $social_media_link->id) }}" method="POST">
                                         @csrf
-                                        <input type="submit" value="Remove" class="btn btn-sm btn-danger ml-3">
+                                        <input type="submit" value="Remove" class="btn btn-sm btn-danger ms-3">
                                     </form>
                                 </td>
                             </tr>

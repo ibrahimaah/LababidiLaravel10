@@ -41,6 +41,7 @@ class PortfolioImageController extends Controller
         $current_category = $categories->where('id', $category_id)->first();
 
         $images = $current_category->images()->paginate(6);
+        
 
         return view('portfolio-image-category')
                 ->with('current_category', $current_category)

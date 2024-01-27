@@ -17,19 +17,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        // $images = Image::all();
-
-        // if($images && count($images) > 0)
-        // {
-        //     return view('portfolio')->withImages($images);
-        // }
-        // else
-        // {
-        //     return view('portfolio')->with('noData','There are no images yet');
-        // }
         $images = Image::all();
         $categories = Category::all();
-        return view('image')->withImages($images)->withCategories($categories);
+        return view('admin.media.image',compact('images','categories'));
     }
 
 

@@ -9,6 +9,15 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SocialMediaLinkController;
 use App\Http\Controllers\PortfolioImageController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PortfolioVideoController;
+use App\Http\Controllers\PrivacyController;
+use App\Http\Controllers\ImprintController;
+use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\ImageController;
 // use App\Models\SocialMediaLink;
 
 /*
@@ -23,47 +32,32 @@ use App\Http\Controllers\PortfolioImageController;
 */
 
 
-Route::get('/', 'App\Http\Controllers\MainController@index')->name('main');
-
-
-Route::get(
-        '/portfolio-image/{category_id}', 
-        [PortfolioImageController::class , 'getSelectedCategory']
-    )->name('portfolio-image-with-category');
-    
-Route::get(
-        '/Fotogalerie', 
-        [PortfolioImageController::class , 'index']
-    )->name('portfolio-image');
-
-Route::get(
-        '/Fotogalerie/{category_id}', 
-        [PortfolioImageController::class , 'getCategoryById']
-    )->name('portfolio-image-category');
-
-
-Route::get('/Videogalerie', 'App\Http\Controllers\PortfolioVideoController@index')->name('portfolio-video');
-
-Route::get('/datenschutz', 'App\Http\Controllers\PrivacyController@index')->name('privacy_policy');
-
-Route::get('/impressum', 'App\Http\Controllers\ImprintController@index')->name('imprint');
-
-Route::get('/advertisement', 'App\Http\Controllers\AdvertisementController@index')->name('advertisement');
-
-Route::get('/job', 'App\Http\Controllers\JobController@index')->name('job');
+Route::get('/', [MainController::class,'index'])->name('main');
+// Route::get('/portfolio-image/{category_id}',[PortfolioImageController::class , 'getSelectedCategory'])->name('portfolio-image-with-category');
+Route::get('/Fotogalerie', [PortfolioImageController::class , 'index'])->name('portfolio-image');
+Route::get('/Fotogalerie/{category_id}', [PortfolioImageController::class , 'getCategoryById'])->name('portfolio-image-category');
+Route::get('/Videogalerie', [PortfolioVideoController::class,'index'])->name('portfolio-video');
+Route::get('/datenschutz', [PrivacyController::class,'index'])->name('privacy_policy');
+Route::get('/impressum', [ImprintController::class,'index'])->name('imprint');
+Route::get('/advertisement', [AdvertisementController::class,'index'])->name('advertisement');
+Route::get('/job', [JobController::class,'index'])->name('job');
 //Route::get('/advertisement', function(){ return 'You Can Not Access This Page'; });
 
 /////////////////////////////////////////////////////////////////////////////////////////
-Route::middleware(['cookie'])->group(function () {
-    Route::get('/admin', 'App\Http\Controllers\SliderController@index')->middleware('cookie');
+Route::middleware(['cookie'])->group(function () 
+{
+    Route::get('admin', [SliderController::class,'index']);
 
-    Route::get('/admin/category', 'App\Http\Controllers\CategoryController@index')->name('admin-category');
-    Route::post('/category/store', 'App\Http\Controllers\CategoryController@store')->name('store-category');
-    Route::post('/category/remove/{id}', 'App\Http\Controllers\CategoryController@destroy')->name('remove-category');
+    Route::get('admin/home/category',[CategoryController::class,'index'])->name('admin-category');
+    Route::get('admin/category/create', [CategoryController::class,'create'])->name('create-category');
+    Route::get('admin/category/edit/{id}', [CategoryController::class,'edit'])->name('edit-category');
+    Route::post('admin/category/store', [CategoryController::class,'store'])->name('store-category');
+    Route::post('admin/category/update/{id}', [CategoryController::class,'update'])->name('update-category');
+    Route::post('admin/category/remove/{id}', [CategoryController::class,'destroy'])->name('remove-category');
 
-    Route::get('/admin/image', 'App\Http\Controllers\ImageController@index')->name('admin-image');
-    Route::post('/image/store', 'App\Http\Controllers\ImageController@store')->name('store-image');
-    Route::post('/image/remove/{id}', 'App\Http\Controllers\ImageController@destroy')->name('remove-image');
+    Route::get('/admin/image', [ImageController::class,'index'])->name('admin-image');
+    Route::post('/image/store', [ImageController::class,'store'])->name('store-image');
+    Route::post('/image/remove/{id}', [ImageController::class,'destroy'])->name('remove-image');
 
     Route::get('/admin/video', 'App\Http\Controllers\VideoController@index')->name('admin-video');
     Route::post('/video/store', 'App\Http\Controllers\VideoController@store')->name('store-video');
